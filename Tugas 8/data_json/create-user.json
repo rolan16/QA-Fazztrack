@@ -1,0 +1,15 @@
+{
+  "id": "511a20c3-d56c-4fb8-a127-aea8947ea4a7",
+  "firstName": "David",
+  "lastName": "Lebron",
+  "age": 30,
+  "occupation": "Atlet",
+  "nationality": "Kroasia",
+  "hobbies": [
+    "Main Bola",
+    "Olahraga"
+  ],
+  "gender": "MALE",
+  "createdDate": "2022-12-14T10:29:06.9924589",
+  "updatedDate": "2022-12-14T10:48:37.2219822"
+}

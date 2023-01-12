@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "6bc543c7-3891-4780-9e5f-f6e7f9f8a928",
+		"name": "Fazztrack-latihan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19708655"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "SINGLE USER",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", () => {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"The response has all properties\", () => {\r",
+									"    pm.expect(jsonData.data).to.be.an('object');\r",
+									"    pm.expect(jsonData.data.id).to.be.an('number');\r",
+									"    pm.expect(jsonData.data.email).to.be.an('string');\r",
+									"    pm.expect(jsonData.data.first_name).to.be.an('string');\r",
+									"    pm.expect(jsonData.data.last_name).to.be.an('string');\r",
+									"    pm.expect(jsonData.data.avatar).to.be.a('string');\r",
+									"    pm.expect(jsonData.support).to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Asserting object properties\", () => {\r",
+									"    pm.expect({\"id\": 2, \"first_name\": \"Janet\"}).to.be.an('object')\r",
+									"    .that.has.all.keys('id','first_name');\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test}}/api/users/2",
+							"host": [
+								"{{test}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Successful POST request\", () => {\r",
+									"  pm.expect(pm.response.code).to.be.oneOf([201,202]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is more than 200ms\", () => {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Asserting a value type\", () => {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.name).to.be.a('string');\r",
+									"    pm.expect(jsonData.job).to.be.a('string');\r",
+									"    pm.expect(jsonData.id).to.be.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Asserting object properties\", () => {\r",
+									"    pm.expect({\"name\": \"Rolan\", \"job\": \"Leader\"}).to.be.an('object')\r",
+									"    .that.has.all.keys('name','job');\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rolan\",\r\n    \"job\": \"Leader\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test}}/api/users",
+							"host": [
+								"{{test}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name is OK\", () => {\r",
+									"  pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is more than 200ms\", () => {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Asserting a value type\", () => {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.name).to.be.a('string');\r",
+									"    pm.expect(jsonData.job).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Molina is a Teacher\", () => {\r",
+									"  const responseJson = pm.response.json();\r",
+									"  pm.expect(responseJson.name).to.eql(\"Molina\");\r",
+									"  pm.expect(responseJson.job).to.eql(\"teacher\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Molina\",\r\n    \"job\": \"teacher\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test}}/api/users/2",
+							"host": [
+								"{{test}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER 5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test data type of the response\", () => {\r",
+									"  pm.expect(jsonData).to.be.an(\"object\");\r",
+									"  pm.expect(jsonData.name).to.be.a(\"string\");\r",
+									"  pm.expect(jsonData.job).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Asserting object properties\", () => {\r",
+									"    pm.expect({\"id\": 2, \"first_name\": \"Janet\"}).to.be.an('object')\r",
+									"    .that.has.all.keys('id','first_name');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Asserting a value type\", () => {\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData.name).to.be.a('string');\r",
+									"    pm.expect(jsonData.job).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type header is present\", () => {\r",
+									"  pm.response.to.have.header(\"Content-Type\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Zilong\",\r\n    \"job\": \"Fighter\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test}}/api/users/5",
+							"host": [
+								"{{test}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"  pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is more than 200ms\", () => {\r",
+									"  pm.expect(pm.response.responseTime).to.be.above(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name is No Content\", () => {\r",
+									"  pm.response.to.have.status(\"No Content\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{test}}/api/users/2",
+							"host": [
+								"{{test}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LIST USERS",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"To Have Length Of 12\", function () {\r",
+									"  pm.expect(jsonData.data).to.have.lengthOf(12);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{test}}/api/users?per_page=12",
+							"host": [
+								"{{test}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

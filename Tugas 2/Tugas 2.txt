@@ -1,0 +1,19 @@
+﻿BDD SCENARIO
+
+
+Scenario 1 : Valid Login in Tokopedia.com
+
+
+Given user open https://www.tokopedia.com/
+When user use valid email
+And user use correct password
+And user click button Login
+Then user already in home page
+
+
+Scenario 2 : Click Cart button without login
+
+
+Given user open https://www.tokopedia.com/
+When user click button Cart
+Then user will go to Login page

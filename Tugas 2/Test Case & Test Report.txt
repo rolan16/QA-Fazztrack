@@ -1,0 +1,74 @@
+					TEST CASE
+
+
+ID				01
+
+Feature			User Login
+
+Description			Check when passing a correct username and password
+
+Steps to Execute		1. Go to https://www.tokopedia.com/
+				2. Click button “Masuk”
+				3. Enter valid phone number or email
+				4. Click button “Selanjutnya”
+				5. Enter correct password
+				6. Click button “Masuk”
+
+Expected Result		1. User will go to the home page
+				2. It will show the user profile account in the top right corner
+
+=====================================================================================
+	
+
+ID				02
+
+Feature			Add to cart
+
+Description			Check when user click add to cart without login
+
+Steps to Execute		1. Go to https://www.tokopedia.com/
+				2. Click button “Cart”
+
+Expected Result		1. Will be redirected to Login page
+	
+
+
+
+					TEST REPORT
+
+
+ID				01
+
+Feature			User Login
+
+Description			Check when passing a correct username and password
+
+Steps to Execute		1. Go to https://www.tokopedia.com/
+				2. Click button “Masuk”
+				3. Enter valid phone number or email
+				4. Click button “Selanjutnya”
+				5. Enter correct password
+				6. Click button “Masuk”
+
+Expected Result		1. User will go to the home page
+				2. It will show the user profile account in the top right corner
+
+Actual Result		As Expected
+
+Test Result			Passed
+
+=====================================================================================
+
+
+ID				02
+
+Feature			Add to cart
+
+Description			Check when user click add to cart without login
+
+Steps to Execute		1. Go to https://www.tokopedia.com/
+				2. Click button “Cart”
+
+Expected Result		1. Will be redirected to Login page
+
+Actual Result		As Expected
