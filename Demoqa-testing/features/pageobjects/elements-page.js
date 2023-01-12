@@ -2,14 +2,14 @@ const Page = require('./page')
 
 class ElementsPage extends Page {
 
-    get btnButtons() {
-        // Locator "Buttons"
-        return $(`.show li:nth-of-type(5)`)
-    }
-
     get namePage() {
         // Locator "Main Header"
         return $('.main-header')
+    }
+
+    get btnButtons() {
+        // Locator "Buttons"
+        return $(`.show li:nth-of-type(5)`)
     }
 
     async clickBtnButtons() {

@@ -2,11 +2,6 @@ const Page = require('./page')
 
 class ButtonsPage extends Page {
 
-    get namePage() {
-        // Locator "Main Header"
-        return $(`//div[@class='main-header']`)
-    }
-
     get btnClickMe() {
         // Locator "Click Me" Buttons
         return $(`//button[.='Click Me']`)
@@ -70,10 +65,6 @@ class ButtonsPage extends Page {
         return await expect(await this.DoubleClickMeMessage.getText()).toEqual('You have done a double click')
     }
 
-    async verifyNamePage(buttons) {
-        await browser.pause(2000)
-        return await expect(await this.namePage).toHaveTextContaining(buttons)
-    }
 }
 
 module.exports = new ButtonsPage()
