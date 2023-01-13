@@ -33,6 +33,7 @@ class ButtonsPage extends Page {
     }
 
     async clickBtnClickMe() {
+        // Aksi click button "Click Me"
         await browser.pause(2000)
         await this.btnClickMe.scrollIntoView({block: 'center'})
         await browser.pause(2000)
@@ -40,6 +41,7 @@ class ButtonsPage extends Page {
     }
 
     async clickBtnRightClickMe() {
+        // Aksi click button "Right Click Me"
         await browser.pause(2000)
         await this.btnRightClickMe.scrollIntoView({block: 'center'})
         await browser.pause(2000)
@@ -47,6 +49,7 @@ class ButtonsPage extends Page {
     }
 
     async clickBtnDoubleClickMe() {
+        // Aksi click button "Double Click Me"
         await browser.pause(2000)
         await this.btnDoubleClickMe.scrollIntoView({block: 'center'})
         await browser.pause(2000)
@@ -54,14 +57,17 @@ class ButtonsPage extends Page {
     }
 
     async verifyClickMeButton() {
+        // verifikasi "Click Me"
         return await expect(await this.ClickMeMessage.getText()).toEqual('You have done a dynamic click')
     }
 
     async verifyRightClickMeButton() {
+        // verifikasi button "Right Click Me"
         return await expect(await this.RightClickMeMessage.getText()).toEqual('You have done a right click')
     }
 
     async verifyDoubleClickMeButton() {
+        // verifikasi button "Double Click Me"
         return await expect(await this.DoubleClickMeMessage.getText()).toEqual('You have done a double click')
     }
 
