@@ -15,8 +15,6 @@ Feature: Latihan Automation di demoqa.com
         When I click on Double Click Me Button
         Then I successfully click on Double Click Me Button
 
-    
-
     @Drop
     Scenario Outline: Successfully Drag and Drop
         Given I am on the Main Page
