@@ -6,7 +6,7 @@ class HomePage extends Page {
     }
 
     get btnLogout () {
-        return $("//a[.='Log out']")
+        return $(`//a[.='Log out']`)
     }
 
     getProductNameLocator(itemName) {
@@ -14,6 +14,9 @@ class HomePage extends Page {
     }
 
     async clickProductName(itemName) {
+        await browser.pause(2000)
+        await this.getProductNameLocator(itemName).scrollIntoView()
+        await browser.pause(2000)
         await this.getProductNameLocator(itemName).click()
     }
     
@@ -21,7 +24,7 @@ class HomePage extends Page {
         return await expect(await this.accountName).toHaveTextContaining(username)
     }
 
-    async logout () {
+    async logout() {
         await this.itsBtnLogoutDisplayed()
         await this.btnLogout.click()
     }
