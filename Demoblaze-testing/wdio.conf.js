@@ -25,9 +25,6 @@ exports.config = {
     specs: [
         './features/**/*.feature'
     ],
-    // specs: [
-    //     './features/**/addtocart.feature'
-    // ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -140,7 +137,13 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: ['spec', ['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        useCucumberStepReporter: true,
+        disableMochaHooks: true,
+        addConsoleLogs: true,
+    }]],
 
 
     //
@@ -239,8 +242,9 @@ exports.config = {
      * @param {String}                   uri      path to feature file
      * @param {GherkinDocument.IFeature} feature  Cucumber feature object
      */
-    // beforeFeature: function (uri, feature) {
-    // },
+    beforeFeature: function (uri, feature) {
+        browser.maximizeWindow()
+    },
     /**
      *
      * Runs before a Cucumber Scenario.
