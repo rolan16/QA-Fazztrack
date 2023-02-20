@@ -1,0 +1,14 @@
+{
+  "name": "cypress-test-demo",
+  "version": "1.0.0",
+  "description": "Cypress Test Demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "author": "Rolan Fransiskus",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.6.0"
+  }
+}
